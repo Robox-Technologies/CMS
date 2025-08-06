@@ -69,7 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    title: Title;
+    articles: Article;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -78,7 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    title: TitleSelect<false> | TitleSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -160,11 +160,12 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "title".
+ * via the `definition` "articles".
  */
-export interface Title {
+export interface Article {
   id: string;
   status: 'draft' | 'published' | 'archived';
+  type: 'blog' | 'case-study';
   title: string;
   content?: {
     root: {
@@ -219,8 +220,8 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'title';
-        value: string | Title;
+        relationTo: 'articles';
+        value: string | Article;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -306,10 +307,11 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "title_select".
+ * via the `definition` "articles_select".
  */
-export interface TitleSelect<T extends boolean = true> {
+export interface ArticlesSelect<T extends boolean = true> {
   status?: T;
+  type?: T;
   title?: T;
   content?: T;
   updatedAt?: T;

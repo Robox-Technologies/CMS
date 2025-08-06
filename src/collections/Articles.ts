@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 import type { ArticleStatus } from '../robox-types'
 const ArticleStatus: ArticleStatus[] = ['draft', 'published', 'archived']
 export const Articles: CollectionConfig = {
-  slug: 'title',
+  slug: 'articles',
   admin: {
     useAsTitle: 'title',
   },
@@ -23,6 +23,16 @@ export const Articles: CollectionConfig = {
         value: status,
       })),
       defaultValue: 'draft',
+      required: true,
+    },
+    {
+      name: 'type',
+      type: 'select',
+      options: [
+        { label: 'Blog Post', value: 'blog' },
+        { label: 'Case Study', value: 'case-study' },
+      ],
+      defaultValue: 'blog',
       required: true,
     },
     {
