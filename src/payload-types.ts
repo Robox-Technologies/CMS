@@ -164,9 +164,10 @@ export interface Media {
  */
 export interface Article {
   id: string;
+  title: string;
   status: 'draft' | 'published' | 'archived';
   type: 'blog' | 'case-study';
-  title: string;
+  tags?: string[] | null;
   content?: {
     root: {
       type: string;
@@ -194,7 +195,23 @@ export interface Article {
   focalX?: number | null;
   focalY?: number | null;
   sizes?: {
-    small?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -310,9 +327,10 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "articles_select".
  */
 export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
   status?: T;
   type?: T;
-  title?: T;
+  tags?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -328,7 +346,27 @@ export interface ArticlesSelect<T extends boolean = true> {
   sizes?:
     | T
     | {
-        small?:
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet?:
           | T
           | {
               url?: T;
