@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import type { ArticleStatus, ArticleLocation } from '../robox-types'
-const ArticleStatus: ArticleStatus[] = ['draft', 'published', 'archived']
-const ArticleLocation: ArticleLocation[] = ['Newsletter', 'Teacher Resource', 'Student Resources']
+import { ArticleStatus, ArticleLocation } from '../robox-types'
+
 export const Articles: CollectionConfig = {
   slug: 'articles',
   admin: {

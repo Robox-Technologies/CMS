@@ -9,10 +9,12 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Articles } from './collections/Articles'
+import { Files } from './collections/Files'
+
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-import { Articles } from './collections/Articles'
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -21,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Articles],
+  collections: [Users, Media, Articles, Files],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
