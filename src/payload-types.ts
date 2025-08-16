@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     articles: Article;
+    files: File;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    files: FilesSelect<false> | FilesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -168,7 +170,8 @@ export interface Article {
   dramaticTitle: string;
   author: string;
   status: 'draft' | 'published' | 'archived';
-  type: 'blog' | 'case-study';
+  favorite?: boolean | null;
+  location: 'Newsletter' | 'Teacher Resource' | 'Student Resources';
   tags?: string[] | null;
   content?: {
     root: {
@@ -225,6 +228,27 @@ export interface Article {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "files".
+ */
+export interface File {
+  id: string;
+  status: 'draft' | 'published' | 'archived';
+  favorite?: boolean | null;
+  location: 'Newsletter' | 'Teacher Resource' | 'Student Resources';
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -241,6 +265,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'articles';
         value: string | Article;
+      } | null)
+    | ({
+        relationTo: 'files';
+        value: string | File;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -333,7 +361,8 @@ export interface ArticlesSelect<T extends boolean = true> {
   dramaticTitle?: T;
   author?: T;
   status?: T;
-  type?: T;
+  favorite?: T;
+  location?: T;
   tags?: T;
   content?: T;
   updatedAt?: T;
@@ -381,6 +410,26 @@ export interface ArticlesSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "files_select".
+ */
+export interface FilesSelect<T extends boolean = true> {
+  status?: T;
+  favorite?: T;
+  location?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
