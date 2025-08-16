@@ -9,6 +9,9 @@
 /.idea/*
 !/.idea/runConfigurations
 
+/articles
+/files
+
 # testing
 /coverage
 
@@ -48,3 +51,4 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+articles/Add a heading.webp
