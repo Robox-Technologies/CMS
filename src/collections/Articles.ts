@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
-import type { ArticleStatus } from '../robox-types'
+import type { ArticleStatus, ArticleLocation } from '../robox-types'
 const ArticleStatus: ArticleStatus[] = ['draft', 'published', 'archived']
+const ArticleLocation: ArticleLocation[] = ['Newsletter', 'Teacher Resource', 'Student Resources']
 export const Articles: CollectionConfig = {
   slug: 'articles',
   admin: {
@@ -47,6 +48,16 @@ export const Articles: CollectionConfig = {
       required: true,
     },
     {
+      name: 'dramaticTitle',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'author',
+      type: 'text',
+      required: true,
+    },
+    {
       type: "row",
       fields: [
         {
@@ -60,12 +71,17 @@ export const Articles: CollectionConfig = {
           required: true,
         },
         {
-          name: 'type',
+          name: "favorite",
+          type: "checkbox",
+          defaultValue: false,
+        },
+        {
+          name: 'location',
           type: 'select',
-          options: [
-            { label: 'Blog Post', value: 'blog' },
-            { label: 'Case Study', value: 'case-study' },
-          ],
+          options: ArticleLocation.map(location => ({
+            label: location.charAt(0).toUpperCase() + location.slice(1),
+            value: location,
+          })),
           defaultValue: 'blog',
           required: true,
         },

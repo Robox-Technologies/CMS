@@ -165,6 +165,8 @@ export interface Media {
 export interface Article {
   id: string;
   title: string;
+  dramaticTitle: string;
+  author: string;
   status: 'draft' | 'published' | 'archived';
   type: 'blog' | 'case-study';
   tags?: string[] | null;
@@ -328,6 +330,8 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
+  dramaticTitle?: T;
+  author?: T;
   status?: T;
   type?: T;
   tags?: T;
