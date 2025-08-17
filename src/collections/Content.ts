@@ -106,7 +106,7 @@ export const Content: CollectionConfig = {
             label: location.charAt(0).toUpperCase() + location.slice(1),
             value: location,
           })),
-          defaultValue: 'blog',
+          defaultValue: 'Student Resources',
           required: true,
         },
         

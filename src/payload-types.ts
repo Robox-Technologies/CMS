@@ -209,7 +209,7 @@ export interface Content {
   } | null;
   File?: (string | null) | File;
   status: 'draft' | 'published' | 'archived';
-  location: 'Newsletter' | 'Teacher Resource' | 'Student Resources';
+  location: 'Newsletter' | 'Teacher Resources' | 'Student Resources';
   favorite?: boolean | null;
   updatedAt: string;
   createdAt: string;
