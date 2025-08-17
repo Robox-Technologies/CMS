@@ -11,6 +11,7 @@
 
 /articles
 /files
+/resources
 
 # testing
 /coverage
