@@ -190,6 +190,7 @@ export interface Content {
   previewTitle: string;
   articleTitle?: string | null;
   description: string;
+  callToAction?: string | null;
   author?: string | null;
   tags?: string[] | null;
   content?: {
@@ -347,6 +348,7 @@ export interface ContentSelect<T extends boolean = true> {
   previewTitle?: T;
   articleTitle?: T;
   description?: T;
+  callToAction?: T;
   author?: T;
   tags?: T;
   content?: T;

@@ -36,6 +36,7 @@ export const Content: CollectionConfig = {
       type: 'text',
       required: true,
     },
+
     {
       name: 'articleTitle',
       type: 'text',
@@ -48,6 +49,10 @@ export const Content: CollectionConfig = {
       type: 'text',
       name: 'description',
       required: true,
+    },
+    {
+      type: 'text',
+      name: 'callToAction',
     },
     // Thumbnail for both types
     // Article-specific fields
