@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload';
 import { ArticleStatus, ArticleLocation } from '../robox-types';
+import slugify from 'slugify';
 
 export const Content: CollectionConfig = {
   slug: 'content',
@@ -117,10 +118,30 @@ export const Content: CollectionConfig = {
         
       ],
     },
+    
     {
       name: 'favorite',
       type: 'checkbox',
       defaultValue: false,
     },
+    {
+      name: 'slug',
+      type: 'text',
+      // auto-generate from title
+      admin: {
+        readOnly: false, // allows manual editing too
+      },
+    },
   ],
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (!data) return;
+        if (!data.slug && data.title) {
+          data.slug = slugify(data.title, { lower: true, strict: true });
+        }
+        return data;
+      },
+    ],
+  },
 };

@@ -212,6 +212,7 @@ export interface Content {
   status: 'draft' | 'published' | 'archived';
   location: 'Newsletter' | 'Teacher Resources' | 'Student Resources';
   favorite?: boolean | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -356,6 +357,7 @@ export interface ContentSelect<T extends boolean = true> {
   status?: T;
   location?: T;
   favorite?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
