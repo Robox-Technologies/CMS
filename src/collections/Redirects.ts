@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import slugify from 'slugify';
 
 export const redirects: CollectionConfig = {
   slug: 'redirects',
@@ -7,9 +8,10 @@ export const redirects: CollectionConfig = {
   },
   fields: [
     {
-      name: 'id',
+      name: 'slug',
       type: 'text',
       required: true,
+      unique: true,
     },
     {
       name: 'destination',
@@ -18,4 +20,15 @@ export const redirects: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (!data) return;
+        if (!data.slug && data.slug) {
+          data.slug = slugify(data.slug, { lower: true, strict: true });
+        }
+        return data;
+      },
+    ],
+  },
 }
