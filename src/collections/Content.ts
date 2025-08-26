@@ -13,6 +13,7 @@ export const Content: CollectionConfig = {
   },
   access: {
     read: () => true,
+    admin: () => true,
   },
   fields: [
     {

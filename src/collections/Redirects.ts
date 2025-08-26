@@ -5,6 +5,7 @@ export const Redirects: CollectionConfig = {
   slug: 'redirects',
   access: {
     read: () => true,
+    admin: () => true,
   },
   fields: [
     {

@@ -4,6 +4,7 @@ export const Files: CollectionConfig = {
   slug: 'files',
   access: {
     read: () => true,
+    admin: () => true,
   },
   fields: [
     {
