@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 
 import { Content } from './collections/Content'
 import { Files } from './collections/Files'
+import { Redirects } from './collections/Redirects'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Files, Content],
+  collections: [Users, Media, Files, Content, Redirects],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

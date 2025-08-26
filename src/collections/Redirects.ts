@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import slugify from 'slugify';
 
-export const redirects: CollectionConfig = {
+export const Redirects: CollectionConfig = {
   slug: 'redirects',
   access: {
     read: () => true,
