@@ -125,21 +125,13 @@ export const Content: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
     },
-    {
-      name: 'slug',
-      type: 'text',
-      // auto-generate from title
-      admin: {
-        readOnly: false, // allows manual editing too
-      },
-    },
   ],
   hooks: {
     beforeValidate: [
       ({ data }) => {
         if (!data) return;
-        console.log(data)
-        if (!data.slug && data.previewTitle) {
+
+        if (data.previewTitle) {
           data.slug = slugify(data.previewTitle, { lower: true, strict: true });
         }
         return data;
