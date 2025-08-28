@@ -138,8 +138,9 @@ export const Content: CollectionConfig = {
     beforeValidate: [
       ({ data }) => {
         if (!data) return;
-        if (!data.slug && data.title) {
-          data.slug = slugify(data.title, { lower: true, strict: true });
+        console.log(data)
+        if (!data.slug && data.previewTitle) {
+          data.slug = slugify(data.previewTitle, { lower: true, strict: true });
         }
         return data;
       },
