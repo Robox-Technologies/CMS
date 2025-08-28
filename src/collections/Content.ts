@@ -50,7 +50,7 @@ export const Content: CollectionConfig = {
     {
       type: 'text',
       name: 'description',
-      required: true,
+      required: false,
     },
     {
       type: 'text',
