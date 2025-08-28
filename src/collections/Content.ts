@@ -125,6 +125,11 @@ export const Content: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
     },
+    {
+      name: "slug",
+      type: "text",
+      required: false,
+    },
   ],
   hooks: {
     beforeValidate: [

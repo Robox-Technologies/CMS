@@ -191,7 +191,7 @@ export interface Content {
   thumbnail: string | Media;
   previewTitle: string;
   articleTitle?: string | null;
-  description: string;
+  description?: string | null;
   callToAction?: string | null;
   author?: string | null;
   tags?: string[] | null;
