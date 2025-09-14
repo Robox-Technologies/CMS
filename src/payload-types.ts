@@ -187,6 +187,7 @@ export interface File {
  */
 export interface Content {
   id: string;
+  _order?: string | null;
   type: 'article' | 'resource';
   thumbnail: string | Media;
   previewTitle: string;
@@ -361,6 +362,7 @@ export interface FilesSelect<T extends boolean = true> {
  * via the `definition` "content_select".
  */
 export interface ContentSelect<T extends boolean = true> {
+  _order?: T;
   type?: T;
   thumbnail?: T;
   previewTitle?: T;

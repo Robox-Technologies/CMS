@@ -15,6 +15,7 @@ export const Content: CollectionConfig = {
     read: () => true,
     admin: () => true,
   },
+  orderable: true,
   fields: [
     {
       name: 'type',
