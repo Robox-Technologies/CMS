@@ -14,6 +14,6 @@ export const Files: CollectionConfig = {
     },
   ],
   upload: {
-    mimeTypes: ["application/pdf"],
+    mimeTypes: ["application/pdf", "application/zip"],
   },
 }
